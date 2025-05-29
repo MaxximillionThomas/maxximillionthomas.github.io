@@ -30,7 +30,7 @@
 
       html {
         font-family: 'Open Sans', sans-serif;
-        background: url(pattern.png);
+        background: url(./pattern.png);
       }
 
       body {
@@ -126,8 +126,7 @@
   <body>
     <header>
       <h1>Mozilla</h1>
-      <!-- insert <img> element, link to the small
-          version of the Firefox logo -->
+      <img src="./originals/firefox_logo-only_RGB.png" alt="Firefox logo">
 
     </header>
 
@@ -151,22 +150,25 @@
       <div class="further-info">
         <!-- insert images with srcsets and sizes -->
         <a href="https://www.mozilla.org/en-US/firefox/new/">
-          <img>
+          <img src="./originals/firefox_logo-only_RGB.png" alt="Firefox logo">
         </a>
         <a href="https://www.mozilla.org/">
-          <img>
+          <img src="./originals/mozilla-dinosaur-head.png" alt="Dinosaur head">
         </a>
         <a href="https://addons.mozilla.org/">
-          <img>
+          <img src="./originals/firefox-addons.jpg" alt="Firefox logo in puzzle pieces">
         </a>
         <a href="https://developer.mozilla.org/en-US/">
-          <img>
+          <img src="./originals/mdn.svg" alt="Blue paper with dinosaur head shape cut out of it">
         </a>
         <div class="clearfix"></div>
       </div>
 
       <div class="red-panda">
-        <!-- insert picture element -->
+         <picture>
+            <source media ="(min-width:600px)" srcset="./originals/red-panda-1200.jpg">
+            <img src="./originals/red-panda-400.jpg" alt="Red panda in a tree" style="width:auto;">
+         </picture>
       </div>
 
     </main>

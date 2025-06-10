@@ -7,16 +7,24 @@ div {
     /* Box styling */
     width: 200px;
     height: 170px;
-    align-self: center;              /* Broken */
+    margin: auto;    
+    background-color: rgb(4, 194, 175);
+    background-image: linear-gradient(); /* here */
     border-radius: 5%;
-    border: 1px outset black;
-    box-shadow: 20px solid black; /* Broken */
+    border: 1px outset rgb(4, 166, 168);
+    box-shadow: 
+        1px 1px 2.5px rgb(0, 0, 0),
+        .5px .5px 3.5px .25px rgb(255, 255, 255) inset, 
+        -1px -1px 2px .25px rgb(1, 81, 86) inset;  
+
 
     /* Text styling */
     text-align: center;
     line-height: 170px;
     font-size: 1.125rem; /* 18 (target) / 16 (base) = 1.125 */
     color: ivory;
-    background-color: aqua;
-    text-shadow: 1.2px 0.3px black;           /* Broken */
+    text-shadow: 1px 1px 1px black;      
 }
+
+https://www.w3schools.com/css/css3_gradients.asp
+add gradient

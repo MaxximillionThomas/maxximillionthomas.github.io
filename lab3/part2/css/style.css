@@ -3,3 +3,19 @@ html {
 }
 
 /* Your CSS below here */
+div {
+    width: 200px;
+    height: 170px;
+    align-self: center;
+    text-align: center;
+    text-size-adjust: 17 px; /* what is a rem? */
+    background-color: aqua;
+    color: ivory;
+    text-shadow: black;
+    border: radius 5%;
+    border: 1px solid black;
+
+
+
+
+}

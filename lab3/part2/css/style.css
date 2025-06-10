@@ -9,7 +9,7 @@ div {
     height: 170px;
     margin: auto;    
     background-color: rgb(4, 194, 175);
-    background-image: linear-gradient(); /* here */
+    background-image: linear-gradient(to bottom right, rgba(0,0,0,0), rgba(0,0,0,.2));
     border-radius: 5%;
     border: 1px outset rgb(4, 166, 168);
     box-shadow: 
@@ -26,5 +26,3 @@ div {
     text-shadow: 1px 1px 1px black;      
 }
 
-https://www.w3schools.com/css/css3_gradients.asp
-add gradient

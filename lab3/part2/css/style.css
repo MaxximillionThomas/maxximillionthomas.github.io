@@ -1,21 +1,22 @@
 html {
   font-family: sans-serif;
+  font-size: 16px;
 }
 
-/* Your CSS below here */
 div {
+    /* Box styling */
     width: 200px;
     height: 170px;
-    align-self: center;
+    align-self: center;              /* Broken */
+    border-radius: 5%;
+    border: 1px outset black;
+    box-shadow: 20px solid black; /* Broken */
+
+    /* Text styling */
     text-align: center;
-    text-size-adjust: 17 px; /* what is a rem? */
-    background-color: aqua;
+    line-height: 170px;
+    font-size: 1.125rem; /* 18 (target) / 16 (base) = 1.125 */
     color: ivory;
-    text-shadow: black;
-    border: radius 5%;
-    border: 1px solid black;
-
-
-
-
+    background-color: aqua;
+    text-shadow: 1.2px 0.3px black;           /* Broken */
 }

@@ -17,23 +17,27 @@ body {
 
 h1, h2, h3, h4 {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 15px;
   letter-spacing: 1px;
 }
 
 h1 {
-  font-size: 25px;
+  font-size: 35px;
   text-align: center;
 }
 
+h2, h3, h4 {
+  font-size: 25px;
+}
+
+
 @font-face {
   font-family: 'Times New Roman';
-  src: local("Times New Roman"), url("./fonts/times.ttf");
+  src: local("Times New Roman"), url("../fonts/times.ttf");
 }
 
 @font-face {
   font-family: Arial;
-  src: local("Arial"), url("./fonts/ARIAL.TTF");
+  src: local("Arial"), url("../fonts/ARIAL.TTF");
 }
 
 p.one {
@@ -84,11 +88,17 @@ a:link {
 a:hover,
 a:visited {
   color: #a66;
+}
+
+a:hover,
+a:focus {
   text-decoration: none;
 }
 
+
 a:focus {
   outline: 3px dashed #a66;
+
 }
 
 img.pop {
@@ -106,3 +116,35 @@ a[href^="http"]::after {
   background-size: 100%;
   background-image: url("../images/external-link-52.png");
 }
+
+ul {
+  list-style-type: square;
+}
+
+ol {
+  list-style-type: lower-alpha;
+}
+
+li {
+  line-height: 15px;
+}
+
+ul.navbar li {
+  list-style-type: none;
+  text-align: center;
+  outline: 1px solid #a66;
+  padding:15px;
+  margin-top: 12px;
+  margin-left: -25px;
+  width: 155px;
+}
+
+ul.navbar li a{
+  text-decoration: none;
+  font-size: 20px;
+}
+
+ul.navbar li.one{
+    margin-top: -10px;
+}
+

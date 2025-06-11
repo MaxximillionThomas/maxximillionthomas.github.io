@@ -1,43 +1,50 @@
 /* General setup */
 
-* {
-  box-sizing: border-box;
-  font-size: 10px;
+@font-face {
+  font-family: Arial;
+  src: local("Arial"), url("../fonts/ARIAL.TTF");
 }
-
-body {
-  font-family: 'Times New Roman', Times, serif;
-  margin: 0 auto;
-  min-width: 1000px;
-  max-width: 1400px;
-  line-height: 15px;
-  letter-spacing: .5px;
-  word-spacing: .5px;
-}
-
-h1, h2, h3, h4 {
-  font-family: Arial, Helvetica, sans-serif;
-  letter-spacing: 1px;
-}
-
-h1 {
-  font-size: 35px;
-  text-align: center;
-}
-
-h2, h3, h4 {
-  font-size: 25px;
-}
-
 
 @font-face {
   font-family: 'Times New Roman';
   src: local("Times New Roman"), url("../fonts/times.ttf");
 }
 
-@font-face {
-  font-family: Arial;
-  src: local("Arial"), url("../fonts/ARIAL.TTF");
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px; /* 'base' for rem calculations */
+}
+
+body {
+  font-family: 'Times New Roman', Times, serif;
+  margin: 5px;
+  min-width: 1000px;
+  max-width: 1400px;
+  line-height: 10px; 
+  letter-spacing: .5px;
+  word-spacing: .5px;
+}
+
+p,
+li {
+  line-height: 15px; 
+}
+
+h1, h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+}
+
+h1 {
+  font-size: 3.5rem; /* (35px target / 10px base) */
+  text-align: center;
+}
+
+h2, h3, h4 {
+  font-size: 2.5rem; /* (25px target / 10px base) */
 }
 
 p.one {
@@ -101,11 +108,6 @@ a:focus {
 
 }
 
-img.pop {
-  height: 8px;
-  width: 8px;
-}
-
 a[href^="http"]::after {
   content: "";
   display: inline-block;
@@ -125,26 +127,38 @@ ol {
   list-style-type: lower-alpha;
 }
 
-li {
-  line-height: 15px;
-}
-
-ul.navbar li {
+nav ul li {
   list-style-type: none;
   text-align: center;
   outline: 1px solid #a66;
-  padding:15px;
-  margin-top: 12px;
-  margin-left: -25px;
+  padding: 15px;
+  margin-top: 1.5rem; /* (15px target / 10px base) */
+  margin-left: -2.5rem; /* (-25px target / 10px base) */
   width: 155px;
 }
 
-ul.navbar li a{
+nav ul li a{
   text-decoration: none;
-  font-size: 20px;
+  font-size: 2rem; /* (20px target /10px base) */
+  display: inline;
 }
 
-ul.navbar li.one{
-    margin-top: -10px;
+nav ul li.one{
+    margin-top: -1rem; /* (-10px target / 10px base) */
 }
 
+nav ul li:hover,
+nav ul li:focus,
+nav ul li:active {
+  background-color: rgb(250, 233, 233);
+}
+
+nav ul li a:hover,
+nav ul li a:focus,
+nav ul li a:active
+{
+  color: rgb(150, 59, 10);
+  font-weight: bold;
+  outline: 5px groove rgb(215, 106, 16);
+  outline-offset: 5px;
+}

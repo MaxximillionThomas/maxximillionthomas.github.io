@@ -72,3 +72,37 @@ header, footer {
   border-bottom: 5px solid #a66;
 }
 
+/* links */
+a {
+  color: #a66;
+}
+
+a:link {
+  color: rgb(232, 73, 73);
+}
+
+a:hover,
+a:visited {
+  color: #a66;
+  text-decoration: none;
+}
+
+a:focus {
+  outline: 3px dashed #a66;
+}
+
+img.pop {
+  height: 8px;
+  width: 8px;
+}
+
+a[href^="http"]::after {
+  content: "";
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  margin-left: 0.25em;
+
+  background-size: 100%;
+  background-image: url("../images/external-link-52.png");
+}

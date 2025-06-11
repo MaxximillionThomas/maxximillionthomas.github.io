@@ -59,11 +59,13 @@ section {
 }
 
 aside {
+  margin-right: -4rem;/* (20px target /10px base) */
   float: left;
   width: 30%;
 }
 
 nav {
+  margin-top: -1rem;
   float: left;
   width: 20%;
 }
@@ -133,7 +135,6 @@ nav ul li {
   outline: 1px solid #a66;
   padding: 15px;
   margin-top: 1.5rem; /* (15px target / 10px base) */
-  margin-left: -2.5rem; /* (-25px target / 10px base) */
   width: 155px;
 }
 
@@ -141,10 +142,6 @@ nav ul li a{
   text-decoration: none;
   font-size: 2rem; /* (20px target /10px base) */
   display: inline;
-}
-
-nav ul li.one{
-    margin-top: -1rem; /* (-10px target / 10px base) */
 }
 
 nav ul li:hover,

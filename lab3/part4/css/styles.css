@@ -48,4 +48,26 @@ body {
 
   .feature {
       width: 200px;
-  }
+  }nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex: 2;
+}
+
+nav li {
+  display: inline;
+  text-align: center;
+  flex: 1;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: .5em 1em;
+}
+.sticky {
+  position: sticky;
+  top: 0;
+}

@@ -71,3 +71,16 @@ nav a {
   position: sticky;
   top: 0;
 }
+article {
+  float: left;
+  width: 75%;
+  margin-right: 30px;
+  flex: 1;
+}
+
+aside {
+  float: left;
+  width: 25%;
+  margin-right: -30px;
+  flex: 1;
+}

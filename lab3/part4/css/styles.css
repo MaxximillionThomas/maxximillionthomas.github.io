@@ -1,54 +1,34 @@
 body {
-    background-color: #fff;
-    color: #333;
-    margin: 0;
-    font: 1.2em / 1.2 Arial, Helvetica, sans-serif;
-  }
+  background-color: #fff;
+  color: #333;
+  margin: 0;
+  font: 1.2em / 1.2 Arial, Helvetica, sans-serif;
+}
 
-  img {
-      max-width: 100%;
-      display: block;
-  }
-  
-  .logo {
-    font-size: 200%;
-    padding: 50px 20px;
-    margin: 0 auto;
-    max-width: 980px;
-  }
-  
-  .grid {
-    margin: 0 auto;
-    padding: 0 20px;
-    max-width: 980px;
-  }
-  
-  nav {
-    background-color: #000;
-    padding: .5em;
-  }
-  
-  nav ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  
-  nav a {
-    color: #fff;
-    text-decoration: none;
-    padding: .5em 1em;
-  }
-  
-  .photos {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
+img {
+  max-width: 100%;
+  display: block;
+}
 
-  .feature {
-      width: 200px;
-  }nav ul {
+.logo {
+  font-size: 200%;
+  padding: 50px 20px;
+  margin: 0 auto;
+  max-width: 980px;
+}
+
+.grid {
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 980px;
+}
+
+nav {
+  background-color: #000;
+  padding: .5em;
+}
+
+nav ul {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -67,10 +47,30 @@ nav a {
   text-decoration: none;
   padding: .5em 1em;
 }
+
+.photos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  grid: 2;
+  /* flexbox */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+}
+
+.feature {
+    width: 200px;
+    height: 200px;
+    float: left;
+    margin-right: 25px;
+}
+
 .sticky {
   position: sticky;
   top: 0;
 }
+
 article {
   float: left;
   width: 75%;
@@ -84,3 +84,4 @@ aside {
   margin-right: -30px;
   flex: 1;
 }
+

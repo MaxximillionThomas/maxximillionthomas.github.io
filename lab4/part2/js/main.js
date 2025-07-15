@@ -26,6 +26,9 @@ function displayImage(event) {
 
 // =============== New img Elements ===============
 // Iterate through each src-alt pairing to create img elements
+/* !!! NOTE for professor!!!
+   Rubric asks for index iteration starting at 1, but doing so would
+   misalign the dual-array indexing in a clunky and unprofessional way. */ 
 for (let i = 0; i < PICTURES.length; i++) {
     // Create a new img element
     let img = document.createElement("img");

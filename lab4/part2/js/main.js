@@ -11,6 +11,21 @@ const PICTURES = ["pic1.jpg", "pic2.jpg", "pic3.jpg", "pic4.jpg", "pic5.jpg"];
 // Array of alternative text for each image file */
 const PICTURES_ALT = ["eyeball", "maybe a seashell", "flowers", "false gods", "niagara"];
 
+// =============== Gallery Image Swapping ===============
+// Enable swapping of gallery image 
+function displayImage(event) {
+    // Assign an identity to the clicked image
+    const TARGET_IMAGE = event.target;
+    // Store attributes
+    img_path = TARGET_IMAGE.getAttribute("src");
+    alt_text = TARGET_IMAGE.getAttribute("alt");
+    // Assign attributes to the display image
+    displayedImage.setAttribute("src", img_path);
+    displayedImage.setAttribute("alt", alt_text);
+    // Add click functionality
+    TARGET_IMAGE.addEventListener("click", displayImage);
+}
+
 // =============== New img Elements ===============
 // Iterate through each src-alt pairing to create img elements
 for (let i = 0; i < PICTURES.length; i++) {
@@ -24,27 +39,8 @@ for (let i = 0; i < PICTURES.length; i++) {
     img.setAttribute("alt", alt_text);
     // Add the img to the div 
     thumbBar.appendChild(img);
+    img.addEventListener("click", displayImage)
 }
-
-// =============== Gallery Image Swapping ===============
-// Enable swapping of gallery image 
-function displayImage(event) {
-    // Assign an identity to the clicked image
-    const TARGET_IMAGE = event.target;
-    // Store attributes
-    img_path = TARGET_IMAGE.getAttribute("src");
-    alt_text = TARGET_IMAGE.getAttribute("alt");
-    // Assign attributes to the display image
-    displayedImage.setAttribute("src", img_path);
-    displayedImage.setAttribute("alt", alt_text);
-}
-
-// Create a list of all images in the gallery
-const IMG_ELEMENTS  = document.querySelectorAll("img");
-// Add click functionality to each of them
-IMG_ELEMENTS.forEach((picture) => {
-    picture.addEventListener("click", displayImage)
-});
 
 // =============== Darken Button ===============
 // Boolean for switching between light and dark mode
@@ -60,7 +56,7 @@ function darkenLighten() {
     } else {
         displayedImage.style = "none";
         btn.textContent = "Darken";
-        btn.style.background = "rgba(150,150,150,0.6)"
+        btn.style.background = "rgba(150, 150, 150, 0.6)"
     }
 }
 

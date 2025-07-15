@@ -22,8 +22,6 @@ function displayImage(event) {
     // Assign attributes to the display image
     displayedImage.setAttribute("src", img_path);
     displayedImage.setAttribute("alt", alt_text);
-    // Add click functionality
-    TARGET_IMAGE.addEventListener("click", displayImage);
 }
 
 // =============== New img Elements ===============
@@ -32,35 +30,35 @@ for (let i = 0; i < PICTURES.length; i++) {
     // Create a new img element
     let img = document.createElement("img");
     // Establish attributes
-    let img_path = "../images/" + PICTURES[i];
+    let img_path = "images/" + PICTURES[i];
     let alt_text = PICTURES_ALT[i];
     // Assign attributes to the img element
     img.setAttribute("src", img_path);
     img.setAttribute("alt", alt_text);
     // Add the img to the div 
     thumbBar.appendChild(img);
+    // Add click functionality
     img.addEventListener("click", displayImage)
 }
 
-// =============== Darken Button ===============
-// Boolean for switching between light and dark mode
-let darkened = false;
-
 // Determine the brightness of the image
-function darkenLighten() {
-    darkened = !darkened;
-    if (darkened) {
-        displayedImage.style = "filter: brightness(60%)";
+function darkenLighten(elem) {
+    if (elem.getAttribute("class") == "dark") {
+        elem.setAttribute("class", "light")
+        overlay.style.backgroundColor = "rgb(0 0 0 / 50%)";
         btn.textContent = "Lighten";
         btn.style.background = "rgba(223, 220, 220, 0.6)"
     } else {
-        displayedImage.style = "none";
+        elem.setAttribute("class", "dark")
+        overlay.style.backgroundColor = "rgb(0 0 0 / 0%)";
         btn.textContent = "Darken";
         btn.style.background = "rgba(150, 150, 150, 0.6)"
     }
 }
 
 // Add button functionality for switching modes
-document.querySelector(".dark").addEventListener("click", darkenLighten)
+btn.addEventListener("click", function() {
+    darkenLighten(this);
+});
 
 

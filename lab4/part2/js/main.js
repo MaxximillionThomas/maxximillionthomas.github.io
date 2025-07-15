@@ -55,8 +55,12 @@ function darkenLighten() {
     darkened = !darkened;
     if (darkened) {
         displayedImage.style = "filter: brightness(60%)";
+        btn.textContent = "Lighten";
+        btn.style.background = "rgba(223, 220, 220, 0.6)"
     } else {
         displayedImage.style = "none";
+        btn.textContent = "Darken";
+        btn.style.background = "rgba(150,150,150,0.6)"
     }
 }
 

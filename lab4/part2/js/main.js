@@ -1,27 +1,36 @@
+// =============== Selectors ===============
+// Selectors stored as variables for easy reference
 const displayedImage = document.querySelector('.displayed-img');
 const thumbBar = document.querySelector('.thumb-bar');
-
 const btn = document.querySelector('button');
 const overlay = document.querySelector('.overlay');
 
-/* Declaring the array of image filenames */
+// =============== Arrays ===============
+// Array of image filenames */
 const PICTURES = ["pic1.jpg", "pic2.jpg", "pic3.jpg", "pic4.jpg", "pic5.jpg"];
-
-/* Declaring the alternative text for each image file */
+// Array of alternative text for each image file */
 const PICTURES_ALT = ["eyeball", "maybe a seashell", "flowers", "false gods", "niagara"];
 
-/* Looping through images */
+// =============== New img Elements ===============
+// Iterate through each src-alt pairing to create img elements
 for (let i = 0; i < PICTURES.length; i++) {
+    // Create a new img element
+    let img = document.createElement("img");
+    // Establish attributes
     let img_path = "../images/" + PICTURES[i];
-    img = document.createElement("img");
+    let alt_text = PICTURES_ALT[i];
+    // Assign attributes to the img element
     img.setAttribute("src", img_path);
-    img.setAttribute("alt", PICTURES_ALT[i]);
+    img.setAttribute("alt", alt_text);
+    // Add the img to the div 
     thumbBar.appendChild(img);
 }
 
-const newImage = document.createElement('img');
-newImage.setAttribute('src', xxx);
-newImage.setAttribute('alt', xxx);
-thumbBar.appendChild(newImage);
+// =============== Gallery Image Swapping ===============
+// Enable swapping of gallery image 
+IMG_ELEMENTS.forEach((picture) => {
+    picture.addEventListener("click", displayImage)
+});
+
 
 /* Wiring up the Darken/Lighten button */

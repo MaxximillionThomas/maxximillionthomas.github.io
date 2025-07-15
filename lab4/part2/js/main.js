@@ -28,9 +28,39 @@ for (let i = 0; i < PICTURES.length; i++) {
 
 // =============== Gallery Image Swapping ===============
 // Enable swapping of gallery image 
+function displayImage(event) {
+    // Assign an identity to the clicked image
+    const TARGET_IMAGE = event.target;
+    // Store attributes
+    img_path = TARGET_IMAGE.getAttribute("src");
+    alt_text = TARGET_IMAGE.getAttribute("alt");
+    // Assign attributes to the display image
+    displayedImage.setAttribute("src", img_path);
+    displayedImage.setAttribute("alt", alt_text);
+}
+
+// Create a list of all images in the gallery
+const IMG_ELEMENTS  = document.querySelectorAll("img");
+// Add click functionality to each of them
 IMG_ELEMENTS.forEach((picture) => {
     picture.addEventListener("click", displayImage)
 });
 
+// =============== Darken Button ===============
+// Boolean for switching between light and dark mode
+let darkened = false;
 
-/* Wiring up the Darken/Lighten button */
+// Determine the brightness of the image
+function darkenLighten() {
+    darkened = !darkened;
+    if (darkened) {
+        displayedImage.style = "filter: brightness(60%)";
+    } else {
+        displayedImage.style = "none";
+    }
+}
+
+// Add button functionality for switching modes
+document.querySelector(".dark").addEventListener("click", darkenLighten)
+
+

@@ -205,7 +205,7 @@ function loop() {
   // Draw the evil cirle
   if (circle.exists) {
     circle.draw();
-    circle.update();
+    circle.checkBounds();
     circle.collisionDetect();
   } else {
     // Circle has shrunk too much - player loses

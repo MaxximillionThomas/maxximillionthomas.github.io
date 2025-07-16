@@ -18,7 +18,6 @@ function randomRGB() {
   return `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`;
 }
 
-
 class Ball {
   // Instantiate the bouncy ball object
   constructor(x, y, velX, velY, color, size) {
@@ -62,6 +61,21 @@ class Ball {
     this.x += this.velX;
     this.y += this.velY;
   }
+
+  // Change ball colors when they make contact
+  collisionDetect() {
+    for (const ball of balls) {
+      if (this !== ball) {
+        const dx = this.x - ball.x;
+        const dy = this.y - ball.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < this.size + ball.size) {
+          ball.color = this.color = randomRGB();
+        }
+      }
+    }
+  }
 }
 
 // Create new array of balls
@@ -92,6 +106,7 @@ function loop() {
   for (const ball of balls) {
     ball.draw();
     ball.update();
+    ball.collisionDetect();
   }
   // Refresh the canvas
   requestAnimationFrame(loop);

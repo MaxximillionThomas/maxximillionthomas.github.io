@@ -82,7 +82,7 @@ class EvilCircle extends Shape {
   }
 
   // Update the circle's position (& velocity after it hits window boundaries)
-  update() {
+  checkBounds() {
     // Establish bounce-back and size reduction amounts
     const BOUNCE = 20;
     const REDUCTION = .5;

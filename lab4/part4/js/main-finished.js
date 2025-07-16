@@ -1,21 +1,36 @@
-// ###############    GENERAL    ###############
-// setup canvas
+// ================================================
+// ===============    ATTRIBUTES    =============== 
+// ================================================
+
+// Canvas setup
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
-
 const width = (canvas.width = window.innerWidth);
 const height = (canvas.height = window.innerHeight);
 
-// function to generate random number
+// Number of balls
+const STARTING_BALLS = 50;
+let ballCount = STARTING_BALLS;
+let ball_count_display = document.querySelector("p");
+
+
+// ================================================
+// =============    BASE FUNCTIONS    ============= 
+// ================================================
+
+// Generate a random number
 function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// function to generate random color
+// Generate a random color
 function randomRGB() {
   return `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`;
 }
 
+// ================================================
+// ================    CLASSES    =================
+// ================================================
 
 // ###############    SHAPE    ###############
 class Shape {
@@ -27,7 +42,6 @@ class Shape {
   }
 }
 
-
 // ###############    EVIL CIRCLE    ###############
 class EvilCircle extends Shape {
   // Instantiate the evil circle object
@@ -35,6 +49,7 @@ class EvilCircle extends Shape {
     super(x, y, 20, 20);
     this.color = "rgb(255, 255, 255)";
     this.size = 10;
+    this.exists = true;
 
     // Allow movement of the cirle with WASD keys
     window.addEventListener("keydown", (e) => {
@@ -91,6 +106,11 @@ class EvilCircle extends Shape {
       this.y += BOUNCE;
       this.size -= REDUCTION;
     }
+
+    // Player loses if size drops to 0
+    if (this.size <= 0) {
+      this.exists = false;
+    }
   }
 
   // Interact with balls
@@ -103,12 +123,12 @@ class EvilCircle extends Shape {
 
         if (distance < this.size + ball.size) {
           ball.exists = false;
+          ballCount -= 1;
         }
       }
     }
   }
 }
-
 
 // ###############    BALL    ###############
 class Ball extends Shape {
@@ -169,10 +189,49 @@ class Ball extends Shape {
   }
 }
 
+// ================================================
+// ===========    ADVANCED FUNCTION   =============
+// ================================================
+
+// ###############    LOOP    ###############
+// Automatically refresh the canvas, evil cirle and balls
+function loop() {
+  // Draw the canvas
+  ctx.fillStyle = "rgba(0, 0, 0, 0.37)";  
+  ctx.fillRect(0, 0, width, height);
+
+  // Draw the evil cirle
+  if (circle.exists) {
+    circle.draw();
+    circle.update();
+    circle.collisionDetect();
+  }
+
+  // Draw the balls
+  for (const ball of balls) {
+    if (ball.exists) {
+      ball.draw();
+      ball.update();
+      ball.collisionDetect();
+    }
+  }
+
+  // Display the ball count
+  ball_count_display.textContent = "Ball count: " + ballCount;
+
+  // Refresh the canvas
+  requestAnimationFrame(loop);
+}
+
+// ================================================
+// ===============    EXECUTION   =================
+// ================================================
+
 // Create new array of balls
 const balls = [];
-// Randomize 25 unique balls and add them to the array
-while (balls.length < 25) {
+
+// Randomize x number of unique balls 
+while (balls.length < STARTING_BALLS) {
   const size = random(10, 20);
   const ball = new Ball(
     // Ball position always drawn at least one ball width
@@ -184,34 +243,14 @@ while (balls.length < 25) {
     randomRGB(),
     size
   );
+
   // Add the ball to the array
   balls.push(ball);
 }
 
-// Create a loop to automatically draw the canvas and it's balls, refreshing with each update
-function loop() {
-  // Draw the canvas
-  ctx.fillStyle = "rgba(0, 0, 0, 0.37)";  
-  ctx.fillRect(0, 0, width, height);
-  // Draw the evil cirle
-  circle.draw();
-  circle.update();
-  circle.collisionDetect();
-  // Draw the balls
-  for (const ball of balls) {
-    if (ball.exists) {
-      ball.draw();
-      ball.update();
-      ball.collisionDetect();
-    }
-  }
-  // Refresh the canvas
-  requestAnimationFrame(loop);
-}
-
-
-// ###############    EXECUTION    ###############
-// Call the canvas, evil circle and balls for visualization
+// Create the evil circle
 const circle = new EvilCircle(0, 0);
+
+// Give life to the objects
 loop();
 

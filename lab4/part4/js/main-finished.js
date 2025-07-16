@@ -67,8 +67,8 @@ class EvilCircle extends Shape {
   // Update the circle's position (& velocity after it hits window boundaries)
   update() {
     // Establish bounce-back and size reduction amounts
-    const BOUNCE = 5;
-    const REDUCTION = 1;
+    const BOUNCE = 20;
+    const REDUCTION = .5;
 
     // Check position relative to left/right boundaries
     if (this.x + this.size >= width) {
@@ -193,11 +193,17 @@ function loop() {
   // Draw the canvas
   ctx.fillStyle = "rgba(0, 0, 0, 0.37)";  
   ctx.fillRect(0, 0, width, height);
+  // Draw the evil cirle
+  circle.draw();
+  circle.update();
+  circle.collisionDetect();
   // Draw the balls
   for (const ball of balls) {
-    ball.draw();
-    ball.update();
-    ball.collisionDetect();
+    if (ball.exists) {
+      ball.draw();
+      ball.update();
+      ball.collisionDetect();
+    }
   }
   // Refresh the canvas
   requestAnimationFrame(loop);
@@ -205,6 +211,7 @@ function loop() {
 
 
 // ###############    EXECUTION    ###############
-// Call the canvas and balls for visualization
+// Call the canvas, evil circle and balls for visualization
+const circle = new EvilCircle(0, 0);
 loop();
 

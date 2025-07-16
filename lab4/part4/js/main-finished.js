@@ -25,9 +25,18 @@ class Shape {
     this.y = y;
     this.velX = velX;
     this.velY = velY;
-    exists = true;
   }
 }
+
+// ###############    EVIL CIRCLE    ###############
+class EvilCircle {
+  constructor(x, y) {
+    super(x, y, 20, 20);
+    this.color = rgb(255, 255, 255);
+    this.size = 10;
+  }
+}
+
 
 // ###############    BALL    ###############
 class Ball extends Shape {
@@ -36,6 +45,7 @@ class Ball extends Shape {
     super(x, y, velX, velY);
     this.color = color;
     this.size = size;
+    this.exists = true;
   }
 
   // Draw the ball onto the screen 

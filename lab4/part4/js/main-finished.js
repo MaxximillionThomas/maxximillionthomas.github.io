@@ -11,8 +11,10 @@ const height = (canvas.height = window.innerHeight);
 // Number of balls
 const STARTING_BALLS = 50;
 let ballCount = STARTING_BALLS;
-let ball_count_display = document.querySelector("p");
+const BALL_COUNT_DISPLAY = document.querySelector("p");
 
+// Winning / losing the game
+const WIN_LOSE_MESSAGE = document.querySelector("div");
 
 // ================================================
 // =============    BASE FUNCTIONS    ============= 
@@ -194,7 +196,7 @@ class Ball extends Shape {
 // ================================================
 
 // ###############    LOOP    ###############
-// Automatically refresh the canvas, evil cirle and balls
+// Automatically refresh the canvas, evil cirlce and balls
 function loop() {
   // Draw the canvas
   ctx.fillStyle = "rgba(0, 0, 0, 0.37)";  
@@ -205,6 +207,12 @@ function loop() {
     circle.draw();
     circle.update();
     circle.collisionDetect();
+  } else {
+    // Circle has shrunk too much - player loses
+    WIN_LOSE_MESSAGE.setAttribute("class", "GamerOver");
+    WIN_LOSE_MESSAGE.textContent = "You lose! That's too bad :(";
+    WIN_LOSE_MESSAGE.style.backgroundColor = "rgba(194, 74, 4, 1)";
+    WIN_LOSE_MESSAGE.style.borderColor = "rgba(194, 29, 4, 1)";
   }
 
   // Draw the balls
@@ -215,9 +223,14 @@ function loop() {
       ball.collisionDetect();
     }
   }
-
+  
   // Display the ball count
-  ball_count_display.textContent = "Ball count: " + ballCount;
+  BALL_COUNT_DISPLAY.textContent = "Ball count: " + ballCount;
+
+  if (ballCount == 0) {
+    WIN_LOSE_MESSAGE.setAttribute("class", "GamerOver");
+    WIN_LOSE_MESSAGE.textContent = "You win, congratulations!!!";
+  }
 
   // Refresh the canvas
   requestAnimationFrame(loop);
@@ -249,8 +262,8 @@ while (balls.length < STARTING_BALLS) {
 }
 
 // Create the evil circle
-const circle = new EvilCircle(0, 0);
+const circle = new EvilCircle(width / 2, height / 2);
 
-// Give life to the objects
+// Give life to the canvas and it's objects
 loop();
 
